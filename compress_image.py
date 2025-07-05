@@ -5,7 +5,6 @@ from PIL import Image
 def compress_image(input_path, output_path, max_width=None, max_height=None, max_size_kb=None, quality=None, to_jpeg=False, redim=False):
     img = Image.open(input_path)
     original_size = os.path.getsize(input_path) / 1024
-    print(f"✅ Tamanho original: {round(original_size,2)} KB")
 
     if redim:
         # Redimensiona mantendo proporção
@@ -38,16 +37,12 @@ def compress_image(input_path, output_path, max_width=None, max_height=None, max
         else:
             img.save(output_path, ext, optimize=True, quality=quality)
             final_size = os.path.getsize(output_path) / 1024
-            print(f"🎯 Qualidade final: {quality}")
-            print(f"📏 Tamanho final: {round(final_size,2)} KB")
     else:
         # Quantiza para cores indexadas (ex: 64 cores)
         img = img.convert('P', palette=Image.ADAPTIVE, colors=64)
         ext = 'PNG'
         img.save(output_path, ext, optimize=True)
         final_size = os.path.getsize(output_path) / 1024
-        print(f"🎯 Qualidade final: Indexada 64 cores")
-        print(f"📏 Tamanho final: {round(final_size,2)} KB")
 
     print(f"✅ Salvo em: {output_path}")
 
