@@ -32,8 +32,6 @@ def compress_image(input_path, output_path, max_width=None, max_height=None, max
                 if final_size <= max_size_kb:
                     break
                 q -= 5
-            print(f"🎯 Qualidade final: {q}")
-            print(f"📏 Tamanho final: {round(final_size,2)} KB")
         else:
             img.save(output_path, ext, optimize=True, quality=quality)
             final_size = os.path.getsize(output_path) / 1024
@@ -44,7 +42,18 @@ def compress_image(input_path, output_path, max_width=None, max_height=None, max
         img.save(output_path, ext, optimize=True)
         final_size = os.path.getsize(output_path) / 1024
 
-    print(f"✅ Salvo em: {output_path}")
+        if max_size_kb:
+            # Loop para reduzir qualidade até atingir o tamanho máximo desejado
+            q = quality if quality else 85
+            while q >= 5:
+                img.save(output_path, ext, optimize=True, quality=q)
+                final_size = os.path.getsize(output_path) / 1024
+                if final_size <= max_size_kb:
+                    break
+                q -= 5
+        else:
+            img.save(output_path, ext, optimize=True, quality=quality)
+            final_size = os.path.getsize(output_path) / 1024
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Compress and resize images efficiently.")
