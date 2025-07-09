@@ -1,94 +1,94 @@
+[🇧🇷] [Lê em português](README.pt.md)
 
-# 🖼️ Compress Image - Redutor e Otimizador de Imagens em Python
+# 🖼️ Compress Image - Python Image Optimizer (v1.1.0)
 
-Este script Python realiza **compressão, redimensionamento e conversão de imagens** de forma prática e eficiente, com suporte a JPEG e PNG.
-
-Ideal para:
-- Otimizar imagens para web, WhatsApp, apresentações, etc.
-- Converter imagens para JPEG reduzindo o tamanho
-- Redimensionar mantendo ou não a proporção
+**A modular Python CLI tool for efficient image compression, resizing, and format conversion**  
+Now with a clean architecture, type hints, and extensible components.
 
 ---
 
-## ⚙️ Tecnologias e Bibliotecas
-
-- [Python 3.x](https://www.python.org/)
-- [Pillow (PIL)](https://pillow.readthedocs.io/en/stable/)
-
-Instale com:
-```bash
-pip install pillow
-```
-
----
-
-## 🧾 Como usar
-
-### Comando básico:
-```bash
-python compress_image.py <entrada> <saida> [opções]
-```
+## 🚀 Key Improvements (v1.1.0+)
+- **Refactored Core**:
+  - OOP-based modular design (`compressor.py`, `converter.py`, `resizer.py`)
+  - Type hints and dataclasses for better maintainability
+  - Separation of concerns (CLI parsing vs. engine logic)
+- **New Features**:
+  - Support for both Windows (`.bat`) and Linux (`.sh`) one-click scripts
+  - Configurable via `CompressionOptions` and `ResizeOptions` classes
+- **Simplified Usage**:
+  - Same CLI interface (backward compatible)
+  - Better error handling and validation
 
 ---
 
-## 📥 Argumentos disponíveis
+## 📸 Comparison of Results
 
-| Argumento             | Tipo     | Descrição                                                                 |
-|-----------------------|----------|---------------------------------------------------------------------------|
-| `input`               | obrigatório | Caminho da imagem de entrada                                              |
-| `output`              | obrigatório | Caminho da imagem de saída                                                |
-| `--max-width`         | inteiro  | Largura máxima da imagem (em pixels)                                      |
-| `--max-height`        | inteiro  | Altura máxima da imagem (em pixels)                                       |
-| `--max-size-kb`       | float    | Tamanho máximo em KB (apenas para JPEG)                                   |
-| `--quality`           | inteiro  | Qualidade do JPEG (padrão: 70)                                            |
-| `--jpeg`              | flag     | Converte a imagem para formato JPEG                                       |
-| `--redim`             | flag     | Mantém a proporção ao redimensionar (`True` = thumbnail, `False` = resize forçado) |
+| Original (80.3KB) | Optimized (28.9KB) |
+|------------------|-------------------|
+| <img src="./assets/img.jpeg" width="300"> | <img src="./assets/reduced_image.jpeg" width="300"> |
+
+*64% reduction in size while maintaining visual quality.*
 
 ---
 
-## 💡 Exemplos práticos
-
-### 🔹 Reduzir mantendo proporção para caber em uma apresentação
+## ⚙️ Updated Architecture
 ```bash
-python compress_image.py imagem.jpg imagem_720p.jpg --max-width 1280 --max-height 720 --jpeg --redim
-```
-
-### 🔹 Comprimir imagem JPEG até 300KB
-```bash
-python compress_image.py selfie.png selfie_compacta.jpg --max-size-kb 300 --jpeg
-```
-
-### 🔹 Redimensionar para 800x800 sem manter proporção
-```bash
-python compress_image.py produto.png produto_800x800.jpg --max-width 800 --max-height 800 --jpeg
-```
-
-### 🔹 Converter PNG para PNG indexado (64 cores)
-```bash
-python compress_image.py banner.png banner_otimizado.png
+src/
+├── core/               # Business logic
+│   ├── compressor.py   # Size/quality optimization
+│   ├── converter.py    # Format conversion (JPEG/PNG)
+│   ├── resizer.py      # Smart resizing (thumbnail/force)
+│   ├── models.py       # Dataclasses for options
+│   └── engine.py       # Orchestration
+└── imgpress/           # CLI layer
+    ├── parser.py       # Argument parsing
+    └── args_parser.py  # Parser interface
 ```
 
 ---
 
-## 🪟 Uso no Windows via `.bat`
+## 🧾 How to Use (Same Simple Interface)
 
-Crie um arquivo chamado `reduzir.bat` com o seguinte conteúdo:
+### Basic Command:
+```bash
+python main.py input.jpg output.jpg [options]
+```
 
+### Popular Options:
+| Option          | Description                          |
+|-----------------|--------------------------------------|
+| `--max-width`   | Maximum output width (pixels)        |
+| `--max-height`  | Maximum output height (pixels)       |
+| `--max-size-kb` | Target filesize (KB)                 |
+| `--quality`     | JPEG quality (1-100)                 |
+| `--jpeg`        | Force JPEG output                    |
+| `--redim`       | Keep aspect ratio when resizing      |
+
+---
+
+## 🪟 One-Click Usage
+**Windows** (`dim_img.bat`):
 ```bat
 @echo off
-python compress_image.py img.jpg reduzida.jpg --max-width 1000 --max-height 1000 --max-size-kb 400 --quality 80 --jpeg --redim
-pause
+python main.py img.jpg optimized.jpg --max-width 1280 --quality 85 --jpeg
 ```
 
-Depois basta arrastar a imagem para a pasta e rodar o `.bat`.
+**Linux/macOS** (`dim_img.sh`):
+```bash
+python3 main.py img.jpg optimized.jpg \
+  --max-width 1280 \
+  --quality 85 \
+  --jpeg
+```
 
 ---
 
+## ✅ Why This Version Rocks
+1. **Future-proof** - Easy to add new features (e.g., WebP support)
+2. **Maintainable** - Clear separation of concerns
+3. **Reliable** - Type hints reduce runtime errors
+4. **Consistent** - Same simple CLI for end-users
 
+---
 
-## ✅ Resultado esperado
-
-- Imagens otimizadas com qualidade visual preservada
-- Arquivos menores para envio ou publicação
-- Ajuste fácil de tamanho e proporção
-
+> 💡 **Pro Tip**: Use `--redim` for social media images and `--max-size-kb` for email attachments!
