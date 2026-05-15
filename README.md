@@ -92,8 +92,3 @@ Depois basta arrastar a imagem para a pasta e rodar o `.bat`.
 - Arquivos menores para envio ou publicação
 - Ajuste fácil de tamanho e proporção
 
----
-
-## ✨ Autor
-
-Desenvolvido por [Seu Nome] — Compartilhe, use e melhore como quiser!
