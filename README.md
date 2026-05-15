@@ -1,99 +1,74 @@
+# 🖼️ Compress Image Pro - Redutor e Otimizador de Imagens
 
-# 🖼️ Compress Image - Redutor e Otimizador de Imagens em Python
+Um aplicativo desktop completo desenvolvido em Python para realizar **compressão, redimensionamento e conversão de imagens** de forma inteligente e visual. 
 
-Este script Python realiza **compressão, redimensionamento e conversão de imagens** de forma prática e eficiente, com suporte a JPEG e PNG.
+A ferramenta analisa a imagem e aplica as melhores técnicas de compressão preservando a qualidade visual, agora com uma interface gráfica moderna e suporte a novos formatos.
 
-Ideal para:
-- Otimizar imagens para web, WhatsApp, apresentações, etc.
-- Converter imagens para JPEG reduzindo o tamanho
-- Redimensionar mantendo ou não a proporção
+---
+
+## ✨ Novidades da Versão Pro
+
+- 🖥️ **Interface Gráfica (GUI):** Adeus linha de comando! Interface moderna construída com `customtkinter`.
+- 👁️ **Preview em Tempo Real:** Visualize as mudanças de proporção e tamanho antes de salvar.
+- 🧠 **Compressão Inteligente:** 
+  - Otimização fotográfica automática (ajuste fino de nitidez e contraste).
+  - Preservação inteligente de transparência (Alpha channel).
+  - Análise de paleta de cores para não inflar arquivos PNG ou WEBP atoa.
+- 🚀 **Multithreading:** A interface não trava enquanto imagens pesadas são processadas.
+- 🔄 **Novos Formatos:** Suporte completo a **WEBP** (Lossy e Lossless), além de JPEG e PNG.
 
 ---
 
 ## ⚙️ Tecnologias e Bibliotecas
 
 - [Python 3.x](https://www.python.org/)
-- [Pillow (PIL)](https://pillow.readthedocs.io/en/stable/)
+- [Pillow (PIL)](https://pillow.readthedocs.io/en/stable/) - Processamento de imagens
+- [CustomTkinter](https://customtkinter.tomschimansky.com/) - Interface gráfica moderna
 
-Instale com:
+### Instalação
+
+Clone o repositório e instale as dependências via `pip`:
+
 ```bash
-pip install pillow
+pip install pillow customtkinter
 ```
+
+## 📥 Formatos Suportados
+
+### 🔽 Entrada
+
+| ✅ | Formato | Extensões |
+|---|---------|-----------|
+| ✅ | JPEG | `.jpg`, `.jpeg` |
+| ✅ | PNG | `.png` |
+| ✅ | BMP | `.bmp` |
+| ✅ | GIF | `.gif` |
+| ✅ | TIFF | `.tiff`, `.tif` |
+| ✅ | WEBP | `.webp` |
+| ✅ | ICO | `.ico` |
+| ✅ | Outros | `.ppm`, `.pgm`, `.pcx`, `.tga` |
+
+### 🔼 Saída
+
+| ✅ | Formato | Extensão | Ideal para |
+|---|---------|----------|------------|
+| ✅ | JPEG | `.jpg` | Fotos e imagens sem transparência |
+| ✅ | PNG | `.png` | Imagens com transparência ou gráficos |
+| ✅ | WEBP | `.webp` | Web moderna, melhor compressão |
 
 ---
 
-## 🧾 Como usar
+## 📊 Comparativo de Versões
 
-### Comando básico:
-```bash
-python compress_image.py <entrada> <saida> [opções]
-```
-
----
-
-## 📥 Argumentos disponíveis
-
-| Argumento             | Tipo     | Descrição                                                                 |
-|-----------------------|----------|---------------------------------------------------------------------------|
-| `input`               | obrigatório | Caminho da imagem de entrada                                              |
-| `output`              | obrigatório | Caminho da imagem de saída                                                |
-| `--max-width`         | inteiro  | Largura máxima da imagem (em pixels)                                      |
-| `--max-height`        | inteiro  | Altura máxima da imagem (em pixels)                                       |
-| `--max-size-kb`       | float    | Tamanho máximo em KB (apenas para JPEG)                                   |
-| `--quality`           | inteiro  | Qualidade do JPEG (padrão: 70)                                            |
-| `--jpeg`              | flag     | Converte a imagem para formato JPEG                                       |
-| `--redim`             | flag     | Mantém a proporção ao redimensionar (`True` = thumbnail, `False` = resize forçado) |
-
----
-
-## 💡 Exemplos práticos
-
-### 🔹 Reduzir mantendo proporção para caber em uma apresentação
-```bash
-python compress_image.py imagem.jpg imagem_720p.jpg --max-width 1280 --max-height 720 --jpeg --redim
-```
-
-### 🔹 Comprimir imagem JPEG até 300KB
-```bash
-python compress_image.py selfie.png selfie_compacta.jpg --max-size-kb 300 --jpeg
-```
-
-### 🔹 Redimensionar para 800x800 sem manter proporção
-```bash
-python compress_image.py produto.png produto_800x800.jpg --max-width 800 --max-height 800 --jpeg
-```
-
-### 🔹 Converter PNG para PNG indexado (64 cores)
-```bash
-python compress_image.py banner.png banner_otimizado.png
-```
-
----
-
-## 🪟 Uso no Windows via `.bat`
-
-Crie um arquivo chamado `reduzir.bat` com o seguinte conteúdo:
-
-```bat
-@echo off
-python compress_image.py img.jpg reduzida.jpg --max-width 1000 --max-height 1000 --max-size-kb 400 --quality 80 --jpeg --redim
-pause
-```
-
-Depois basta arrastar a imagem para a pasta e rodar o `.bat`.
-
----
-
-
-
-## ✅ Resultado esperado
-
-- Imagens otimizadas com qualidade visual preservada
-- Arquivos menores para envio ou publicação
-- Ajuste fácil de tamanho e proporção
-
----
-
-## ✨ Autor
-
-Desenvolvido por [Seu Nome] — Compartilhe, use e melhore como quiser!
+| Funcionalidade | Versão Terminal (v1.0) | Versão GUI (v2.0) ✨ |
+|:---|:---:|:---:|
+| **Interface** | `Linha de comando` | `Interface gráfica moderna` |
+| **Preview** | ❌ | ✅ Tempo real |
+| **Formatos de saída** | JPEG, PNG | JPEG, PNG, **WEBP** 🆕 |
+| **Compressão inteligente** | Básica | **Avançada** (nunca aumenta) |
+| **Otimização de fotos** | ❌ | ✅ Nitidez + contraste automático |
+| **Transparência** | ⚠️ Perdida ao converter | ✅ Preservada e tratada |
+| **Tema** | N/A | 🌓 Claro/Escuro automático |
+| **Progresso** | Terminal | 📊 Barra de progresso visual |
+| **Arrastar e soltar** | ❌ | ❌ *(planejado)* |
+| **Processamento em lote** | ❌ | ❌ *(planejado)* |
