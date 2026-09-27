@@ -48,6 +48,16 @@ Entre os formatos suportados estão:
 | PNG | Imagens com transparência e elementos gráficos |
 | WEBP | Uso web e boa relação entre qualidade e tamanho |
 
+## 📸 Screenshots
+
+### Imagem carregada
+
+![Compress Image - imagem carregada](assets/screenshots/01-main.png)
+
+### Resultado da compressão
+
+![Compress Image - resultado](assets/screenshots/02-result.png)
+
 ## 🧠 Destaques técnicos
 
 O projeto combina processamento de imagens e interface gráfica, com cuidados para que arquivos maiores não travem a aplicação.
