@@ -52,11 +52,11 @@ Entre os formatos suportados estão:
 
 ### Imagem carregada
 
-![Compress Image - imagem carregada](assets/screenshots/01-main.png)
+![Compress Image - imagem carregada](assets/screenshots/01-imagem-selecionada.png)
 
 ### Resultado da compressão
 
-![Compress Image - resultado](assets/screenshots/02-result.png)
+![Compress Image - resultado](assets/screenshots/02-resultado-compressao.png)
 
 ## 🧠 Destaques técnicos
 
